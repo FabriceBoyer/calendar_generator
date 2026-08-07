@@ -36,10 +36,17 @@
     border: none !important;
     border-radius: 0 !important;
     width: 100% !important;
-    height: 100% !important;
+    /* `height: 100%` would need every ancestor to have a definite height,
+       but html/body are `auto` above, so it silently resolves to `auto`
+       and the page grows to fit its content instead of being capped at
+       one sheet. `vh` is resolved against the @page box in print (not the
+       ancestor chain), so it reliably caps the page at exactly one sheet,
+       letting the grid's `minmax(0, ...)` rows actually clip instead of
+       overflowing onto a second page. */
+    height: 100vh !important;
+    max-height: 100vh !important;
     aspect-ratio: unset !important;
     overflow: hidden !important;
-    page-break-after: always;
     background: white !important;
     color: #111 !important;
   }
