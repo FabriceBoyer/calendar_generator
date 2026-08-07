@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import type { WeightRange } from '../../types'
+import { computeWeightGridLines } from '../../utils/weightScale'
 
 interface WeightChartProps {
   weights: (number | null)[]
@@ -30,7 +31,7 @@ export function WeightChart({ weights, range, gridRow, color = 'var(--accent)' }
     return d
   }, [points])
 
-  const gridLines = [0, 25, 50, 75, 100]
+  const gridLines = useMemo(() => computeWeightGridLines(range), [range])
 
   return (
     <svg
@@ -40,7 +41,15 @@ export function WeightChart({ weights, range, gridRow, color = 'var(--accent)' }
       style={{ gridRow, gridColumn: '1 / -1' }}
     >
       {gridLines.map((g) => (
-        <line key={g} x1={0} y1={g} x2={100} y2={g} className="chart-gridline" vectorEffect="non-scaling-stroke" />
+        <line
+          key={g.value}
+          x1={0}
+          y1={g.percent}
+          x2={100}
+          y2={g.percent}
+          className="chart-gridline"
+          vectorEffect="non-scaling-stroke"
+        />
       ))}
       {Array.from({ length: n + 1 }).map((_, i) => (
         <line

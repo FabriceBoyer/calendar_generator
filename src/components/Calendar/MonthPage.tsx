@@ -1,8 +1,11 @@
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { ActivityDef, AppSettings, DayEntry } from '../../types'
 import { formatMonthTitle, getMonthDays, dateKey } from '../../utils/date'
 import { PAPER_RATIOS } from '../../utils/paper'
 import { resolveLabel } from '../../i18n'
+import { hexToRgba } from '../../utils/color'
+import { computeWeightGridLines } from '../../utils/weightScale'
 import { DayActivitiesCell, DayHeaderCell, DayWeightInputCell } from './DayColumn'
 import { WeightChart } from './WeightChart'
 
@@ -23,6 +26,7 @@ export function MonthPage({ monthKey, settings, activities, entries, interactive
   const days = getMonthDays(monthKey)
   const weights = days.map((d) => entries[dateKey(d)]?.weight ?? null)
   const ratio = PAPER_RATIOS[settings.paperSize]
+  const gridLines = useMemo(() => computeWeightGridLines(settings.weightRange), [settings.weightRange])
 
   return (
     <div
@@ -34,8 +38,10 @@ export function MonthPage({ monthKey, settings, activities, entries, interactive
         <h2 className="calendar-title">{formatMonthTitle(monthKey, settings.locale)}</h2>
         <div className="calendar-legend">
           {activities.map((a) => (
-            <span key={a.id} className="legend-item" style={{ '--legend-color': a.color } as React.CSSProperties}>
-              <span className="legend-dot">{a.icon}</span>
+            <span key={a.id} className="legend-item">
+              <span className="legend-dot" style={{ backgroundColor: hexToRgba(a.color, 0.25) }}>
+                {a.icon}
+              </span>
               {resolveLabel(t, a.name)}
             </span>
           ))}
@@ -46,13 +52,15 @@ export function MonthPage({ monthKey, settings, activities, entries, interactive
         className="calendar-grid"
         style={{
           gridTemplateColumns: `34px repeat(${days.length}, 1fr)`,
-          gridTemplateRows: 'auto 1fr 96px 34px',
+          gridTemplateRows: 'auto 1fr 1.3fr 0.4fr',
         }}
       >
         <div className="weight-axis" style={{ gridColumn: 1, gridRow: CHART_ROW }}>
-          <span className="axis-label axis-max">{settings.weightRange.max}</span>
-          <span className="axis-unit">{settings.weightUnit}</span>
-          <span className="axis-label axis-min">{settings.weightRange.min}</span>
+          {gridLines.map((g, i) => (
+            <span key={g.value} className="axis-tick" style={{ top: `${g.percent}%` }}>
+              {i === gridLines.length - 1 ? `${g.value} ${settings.weightUnit}` : g.value}
+            </span>
+          ))}
         </div>
 
         {days.map((d, i) => (
