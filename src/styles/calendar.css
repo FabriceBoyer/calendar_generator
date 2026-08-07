@@ -13,6 +13,22 @@
   position: relative;
 }
 
+/* Desktop: size the calendar by the height available in the viewport
+   (rather than by width) so the whole month fits on one screen without
+   scrolling, with the width following from the paper aspect ratio. */
+@media (min-width: 901px) {
+  .print-area {
+    padding: 0.75rem 1rem 1rem;
+    overflow: hidden;
+  }
+  .calendar-page {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+
 .calendar-page-header {
   display: flex;
   align-items: baseline;
@@ -73,6 +89,8 @@
   padding: 0.15rem 0 0.35rem;
   border-left: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  min-width: 0;
 }
 .day-header-cell:last-child {
   border-right: 1px solid var(--border);
@@ -113,6 +131,8 @@
   padding: 3px 2px;
   border-left: 1px solid var(--border);
   overflow: hidden;
+  min-width: 0;
+  min-height: 0;
 }
 .day-activities-cell:last-child {
   border-right: 1px solid var(--border);
@@ -208,6 +228,9 @@
   border-left: 1px solid var(--border);
   border-top: 1px solid var(--border);
   padding: 2px;
+  overflow: hidden;
+  min-height: 0;
+  min-width: 0;
 }
 .day-weight-cell:last-child {
   border-right: 1px solid var(--border);
@@ -219,7 +242,7 @@
   font-size: 0.72rem;
   font-weight: 600;
   padding: 2px;
-  min-height: 1.6em;
+  min-height: 0;
 }
 
 .weight-blank-line {
@@ -240,5 +263,16 @@
   .calendar-page {
     aspect-ratio: unset !important;
     min-height: 70vh;
+    width: 100%;
+    padding: 1rem 0.6rem 0.8rem;
+  }
+  /* Day columns keep a readable minimum width and scroll horizontally
+     instead of being squeezed illegibly to fit the screen width. */
+  .calendar-grid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .calendar-page-header {
+    padding-left: 0.4rem;
   }
 }

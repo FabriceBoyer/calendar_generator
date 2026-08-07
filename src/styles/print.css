@@ -1,4 +1,11 @@
 @media print {
+  :root {
+    /* Faint on-screen border/line tints read as almost invisible once
+       rasterized on paper, so use much stronger values for print. */
+    --border: #94969e;
+    --text-2: #55575f;
+  }
+
   .no-print {
     display: none !important;
   }
@@ -31,6 +38,7 @@
     width: 100% !important;
     height: 100% !important;
     aspect-ratio: unset !important;
+    overflow: hidden !important;
     page-break-after: always;
     background: white !important;
     color: #111 !important;
@@ -40,7 +48,15 @@
     color: #111 !important;
   }
 
-  .day-column {
-    border-color: #ccc !important;
+  .day-header-cell,
+  .day-activities-cell,
+  .day-weight-cell,
+  .weight-axis {
+    border-color: #94969e !important;
+  }
+
+  .chart-gridline,
+  .chart-colline {
+    stroke: #94969e !important;
   }
 }

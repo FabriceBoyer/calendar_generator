@@ -35,20 +35,24 @@ export function Toolbar({ onOpenSettings, onOpenExport, onOpenGarmin }: ToolbarP
           title={t('header.today')}
           type="button"
         >
-          🏠 {t('header.today')}
+          🏠 <span className="btn-label">{t('header.today')}</span>
         </button>
       </div>
 
       <div className="toolbar-actions">
-        {onlineMode && <span className="badge">✏️ {t('settings.onlineMode')}</span>}
-        <button className="btn" onClick={onOpenGarmin} type="button">
-          ⌚ {t('header.garmin')}
+        {onlineMode && (
+          <span className="badge">
+            ✏️ <span className="btn-label">{t('settings.onlineMode')}</span>
+          </span>
+        )}
+        <button className="btn" onClick={onOpenGarmin} title={t('header.garmin')} type="button">
+          ⌚ <span className="btn-label">{t('header.garmin')}</span>
         </button>
-        <button className="btn" onClick={onOpenExport} type="button">
-          ⬇ {t('header.export')}
+        <button className="btn" onClick={onOpenExport} title={t('header.export')} type="button">
+          ⬇ <span className="btn-label">{t('header.export')}</span>
         </button>
-        <button className="btn btn-primary" onClick={onOpenSettings} type="button">
-          ⚙ {t('header.settings')}
+        <button className="btn btn-primary" onClick={onOpenSettings} title={t('header.settings')} type="button">
+          ⚙ <span className="btn-label">{t('header.settings')}</span>
         </button>
       </div>
     </div>

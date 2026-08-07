@@ -28,14 +28,14 @@ export function Header() {
       </div>
 
       <nav className="app-nav">
-        <Link to="/" className={`nav-link${location.pathname === '/' ? ' active' : ''}`}>
-          {t('header.home')}
+        <Link to="/" className={`nav-link${location.pathname === '/' ? ' active' : ''}`} title={t('header.home')}>
+          📅 <span className="btn-label">{t('header.home')}</span>
         </Link>
-        <Link to="/stats" className={`nav-link${location.pathname === '/stats' ? ' active' : ''}`}>
-          {t('header.stats')}
+        <Link to="/stats" className={`nav-link${location.pathname === '/stats' ? ' active' : ''}`} title={t('header.stats')}>
+          📊 <span className="btn-label">{t('header.stats')}</span>
         </Link>
-        <Link to="/docs" className={`nav-link${location.pathname === '/docs' ? ' active' : ''}`}>
-          {t('header.docs')}
+        <Link to="/docs" className={`nav-link${location.pathname === '/docs' ? ' active' : ''}`} title={t('header.docs')}>
+          📖 <span className="btn-label">{t('header.docs')}</span>
         </Link>
       </nav>
 

@@ -104,6 +104,17 @@ a {
   min-height: 100vh;
 }
 
+/* On desktop we try to fit the whole app (header, toolbar, calendar) in a
+   single viewport with no page scroll. Smaller screens keep natural
+   scrolling since content can't reasonably be squeezed into one screen. */
+@media (min-width: 901px) {
+  .app-shell {
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+  }
+}
+
 .glass {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -244,6 +255,15 @@ input[type='color'] {
 .scroll-area {
   overflow: auto;
   flex: 1;
+}
+
+/* Only the calendar view (.print-area) fits to one screen on desktop;
+   Docs/Stats pages keep normal scrolling since their content can be long. */
+@media (min-width: 901px) {
+  .scroll-area.print-area {
+    min-height: 0;
+    overflow: hidden;
+  }
 }
 
 @media print {

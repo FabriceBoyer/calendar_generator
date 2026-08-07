@@ -6,6 +6,7 @@ import { PAPER_RATIOS } from '../../utils/paper'
 import { resolveLabel } from '../../i18n'
 import { hexToRgba } from '../../utils/color'
 import { computeWeightGridLines } from '../../utils/weightScale'
+import type { FitSize } from '../../hooks/useFitCalendarSize'
 import { DayActivitiesCell, DayHeaderCell, DayWeightInputCell } from './DayColumn'
 import { WeightChart } from './WeightChart'
 
@@ -16,24 +17,27 @@ interface MonthPageProps {
   entries: Record<string, DayEntry>
   interactive: boolean
   forExport?: boolean
+  fitSize?: FitSize | null
 }
 
 const CHART_ROW = 3
 const INPUT_ROW = 4
 
-export function MonthPage({ monthKey, settings, activities, entries, interactive, forExport }: MonthPageProps) {
+export function MonthPage({ monthKey, settings, activities, entries, interactive, forExport, fitSize }: MonthPageProps) {
   const { t } = useTranslation()
   const days = getMonthDays(monthKey)
   const weights = days.map((d) => entries[dateKey(d)]?.weight ?? null)
   const ratio = PAPER_RATIOS[settings.paperSize]
   const gridLines = useMemo(() => computeWeightGridLines(settings.weightRange), [settings.weightRange])
 
+  const pageStyle = forExport
+    ? undefined
+    : fitSize
+      ? { width: fitSize.width, height: fitSize.height }
+      : { aspectRatio: ratio }
+
   return (
-    <div
-      className="calendar-page glass"
-      data-month={monthKey}
-      style={forExport ? undefined : { aspectRatio: ratio }}
-    >
+    <div className="calendar-page glass" data-month={monthKey} style={pageStyle}>
       <div className="calendar-page-header">
         <h2 className="calendar-title">{formatMonthTitle(monthKey, settings.locale)}</h2>
         <div className="calendar-legend">
@@ -51,8 +55,8 @@ export function MonthPage({ monthKey, settings, activities, entries, interactive
       <div
         className="calendar-grid"
         style={{
-          gridTemplateColumns: `34px repeat(${days.length}, 1fr)`,
-          gridTemplateRows: 'auto 1fr 1.3fr 0.4fr',
+          gridTemplateColumns: `34px repeat(${days.length}, minmax(28px, 1fr))`,
+          gridTemplateRows: 'auto minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 0.4fr)',
         }}
       >
         <div className="weight-axis" style={{ gridColumn: 1, gridRow: CHART_ROW }}>

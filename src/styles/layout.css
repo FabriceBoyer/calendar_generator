@@ -3,11 +3,9 @@
   align-items: center;
   gap: 1.2rem;
   flex-wrap: wrap;
+  flex-shrink: 0;
   margin: 1rem 1rem 0;
   padding: 0.75rem 1.2rem;
-  position: sticky;
-  top: 0.75rem;
-  z-index: 20;
   animation: floatIn 0.5s ease both;
 }
 
@@ -88,6 +86,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  flex-shrink: 0;
   gap: 0.7rem;
   margin: 1rem 1rem 0;
   padding: 0.6rem 1rem;
@@ -553,11 +552,41 @@
   fill: var(--text-1);
 }
 
+/* Compact chrome: below this width, buttons keep their icon but drop their
+   text label so the header/toolbar stay on as few rows as possible and
+   never crowd out the calendar itself. */
+@media (max-width: 900px) {
+  .btn-label {
+    display: none;
+  }
+  .app-subtitle {
+    display: none;
+  }
+  .app-logo {
+    font-size: 1.4rem;
+  }
+  .app-header {
+    gap: 0.6rem;
+    padding: 0.55rem 0.9rem;
+  }
+  .toolbar {
+    padding: 0.5rem 0.7rem;
+  }
+  .month-label {
+    min-width: 0;
+    padding: 0.55em 0.6em;
+    font-size: 0.82rem;
+  }
+  .nav-link {
+    padding: 0.4em 0.55em;
+  }
+}
+
 @media (max-width: 720px) {
   .app-header,
   .toolbar {
     margin: 0.6rem 0.6rem 0;
-    padding: 0.6rem 0.8rem;
+    padding: 0.5rem 0.7rem;
   }
   .app-nav {
     margin-right: 0;

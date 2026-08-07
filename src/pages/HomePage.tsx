@@ -7,6 +7,9 @@ import { Modal } from '../components/Layout/Modal'
 import { SettingsPanel } from '../components/Settings/SettingsPanel'
 import { ExportMenu } from '../components/Export/ExportMenu'
 import { GarminImport } from '../components/Garmin/GarminImport'
+import { useMediaQuery } from '../hooks/useMediaQuery'
+import { useFitCalendarSize } from '../hooks/useFitCalendarSize'
+import { PAPER_RATIOS } from '../utils/paper'
 
 export function HomePage() {
   const { t } = useTranslation()
@@ -17,6 +20,10 @@ export function HomePage() {
 
   const [modal, setModal] = useState<'settings' | 'export' | 'garmin' | null>(null)
 
+  const isDesktop = useMediaQuery('(min-width: 901px)')
+  const ratio = PAPER_RATIOS[settings.paperSize]
+  const { containerRef, size: fitSize } = useFitCalendarSize(ratio, isDesktop)
+
   return (
     <>
       <Toolbar
@@ -25,13 +32,14 @@ export function HomePage() {
         onOpenGarmin={() => setModal('garmin')}
       />
 
-      <div className="scroll-area print-area">
+      <div className="scroll-area print-area" ref={containerRef}>
         <MonthPage
           monthKey={currentMonth}
           settings={settings}
           activities={activities}
           entries={entries}
           interactive={settings.onlineMode}
+          fitSize={fitSize}
         />
       </div>
 
