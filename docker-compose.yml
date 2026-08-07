@@ -1,0 +1,11 @@
+services:
+  calendar-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_BASE_PATH: /
+    image: calendar-generator:local
+    ports:
+      - '8080:80'
+    restart: unless-stopped

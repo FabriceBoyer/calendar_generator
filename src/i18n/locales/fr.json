@@ -12,6 +12,7 @@
     "settings": "Paramètres",
     "docs": "Documentation",
     "home": "Calendrier",
+    "stats": "Statistiques",
     "today": "Aujourd'hui",
     "prevMonth": "Mois précédent",
     "nextMonth": "Mois suivant",
@@ -148,5 +149,23 @@
   "months": {
     "0": "Janvier", "1": "Février", "2": "Mars", "3": "Avril", "4": "Mai", "5": "Juin",
     "6": "Juillet", "7": "Août", "8": "Septembre", "9": "Octobre", "10": "Novembre", "11": "Décembre"
+  },
+  "stats": {
+    "title": "Statistiques",
+    "subtitle": "Vue d'ensemble de vos activités et de votre poids, toutes périodes confondues.",
+    "noData": "Aucune donnée pour le moment. Remplissez votre calendrier en mode en ligne pour voir apparaître vos statistiques ici.",
+    "daysTracked": "Jours suivis",
+    "activitiesLogged": "Activités enregistrées",
+    "currentWeight": "Poids actuel",
+    "weightChange": "Variation",
+    "since": "depuis le début du suivi",
+    "noWeightData": "Aucune donnée de poids enregistrée.",
+    "noActivityData": "Aucune activité enregistrée.",
+    "byActivity": "Répartition par activité",
+    "weightEvolution": "Évolution du poids",
+    "avg": "Moyenne",
+    "min": "Min",
+    "max": "Max",
+    "entries": "entrées"
   }
 }

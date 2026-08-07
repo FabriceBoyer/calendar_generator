@@ -31,6 +31,9 @@ export function Header() {
         <Link to="/" className={`nav-link${location.pathname === '/' ? ' active' : ''}`}>
           {t('header.home')}
         </Link>
+        <Link to="/stats" className={`nav-link${location.pathname === '/stats' ? ' active' : ''}`}>
+          {t('header.stats')}
+        </Link>
         <Link to="/docs" className={`nav-link${location.pathname === '/docs' ? ' active' : ''}`}>
           {t('header.docs')}
         </Link>
