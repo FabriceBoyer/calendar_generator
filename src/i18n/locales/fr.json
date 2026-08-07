@@ -1,0 +1,152 @@
+{
+  "app": {
+    "title": "Calendrier Fitness",
+    "subtitle": "Générateur de calendrier à imprimer"
+  },
+  "header": {
+    "print": "Imprimer",
+    "exportPdf": "Export PDF",
+    "exportDocx": "Export Word",
+    "exportJson": "Export JSON",
+    "importJson": "Importer JSON",
+    "settings": "Paramètres",
+    "docs": "Documentation",
+    "home": "Calendrier",
+    "today": "Aujourd'hui",
+    "prevMonth": "Mois précédent",
+    "nextMonth": "Mois suivant",
+    "theme": "Thème",
+    "language": "Langue",
+    "export": "Exporter",
+    "garmin": "Import Garmin"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "appearance": "Apparence",
+    "accentColor": "Couleur d'accent",
+    "backgroundImage": "Image de fond (URL)",
+    "backgroundImagePlaceholder": "https://exemple.com/image.jpg",
+    "removeImage": "Retirer l'image",
+    "paperSize": "Format papier",
+    "weightRange": "Plage de poids",
+    "weightUnit": "Unité de poids",
+    "min": "Min",
+    "max": "Max",
+    "activities": "Activités",
+    "addActivity": "Ajouter une activité",
+    "editActivity": "Modifier l'activité",
+    "deleteActivity": "Supprimer",
+    "activityName": "Nom de l'activité",
+    "activityIcon": "Icône",
+    "activityColor": "Couleur",
+    "activityFields": "Champs de détail",
+    "addField": "Ajouter un champ",
+    "fieldLabel": "Libellé",
+    "fieldUnit": "Unité",
+    "fieldType": "Type",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "reset": "Réinitialiser",
+    "resetConfirm": "Réinitialiser tous les réglages et données ?",
+    "light": "Clair",
+    "dark": "Sombre",
+    "language": "Langue",
+    "onlineMode": "Mode en ligne (saisie interactive)",
+    "onlineModeDesc": "Active la saisie interactive du calendrier dans le navigateur, en plus de l'impression. Vos données restent stockées localement.",
+    "dataSection": "Données",
+    "exportJsonDesc": "Exporte toutes vos données (activités, saisies, réglages) dans un fichier JSON.",
+    "importJsonDesc": "Importe des données précédemment exportées au format JSON.",
+    "garminSection": "Import Garmin Connect"
+  },
+  "fieldTypes": {
+    "duration": "Durée",
+    "distance": "Distance",
+    "number": "Nombre",
+    "text": "Texte"
+  },
+  "calendar": {
+    "weight": "Poids",
+    "weightShort": "kg",
+    "activities": "Activités",
+    "notes": "Notes",
+    "printTitle": "Calendrier {{month}}"
+  },
+  "activities": {
+    "walk": "Marche",
+    "swim": "Piscine",
+    "pilates": "Pilates",
+    "bike": "Vélo",
+    "plank": "Gainage",
+    "run": "Course"
+  },
+  "fields": {
+    "duration": "Durée",
+    "distance": "Distance",
+    "sets": "Séries",
+    "number": "Nombre",
+    "text": "Texte"
+  },
+  "docs": {
+    "title": "Documentation",
+    "intro": "Guide d'utilisation du générateur de calendrier fitness.",
+    "sections": {
+      "overview": {
+        "title": "Présentation",
+        "body": "Cette application génère un calendrier mensuel imprimable, un mois par page en format paysage, avec une colonne par jour. Chaque colonne permet de noter les activités physiques réalisées (haut de colonne) et le poids du jour (bas de colonne), relié aux autres jours pour former un graphique d'évolution."
+      },
+      "activities": {
+        "title": "Activités",
+        "body": "Des activités par défaut sont proposées (marche, piscine, pilates, vélo, gainage, course). Vous pouvez en ajouter, modifier ou supprimer depuis les Paramètres, avec une icône, une couleur et des champs de détail personnalisés (durée, distance, séries, etc)."
+      },
+      "weight": {
+        "title": "Suivi du poids",
+        "body": "Saisissez le poids du jour dans le bas de chaque colonne. Un graphique relie automatiquement les points du mois. La plage de l'axe (par défaut 90-110 kg) est configurable dans les Paramètres."
+      },
+      "persistence": {
+        "title": "Sauvegarde locale",
+        "body": "Toutes vos données (réglages, activités, saisies) sont automatiquement enregistrées dans le stockage local de votre navigateur (localStorage). Rien n'est envoyé à un serveur : tout reste sur votre appareil."
+      },
+      "online": {
+        "title": "Mode en ligne",
+        "body": "Le mode en ligne permet de remplir le calendrier directement dans le navigateur avant impression. Vous pouvez à tout moment exporter vos données au format JSON (sauvegarde ou transfert vers un autre appareil) et les réimporter ensuite."
+      },
+      "export": {
+        "title": "Impression et export",
+        "body": "Utilisez le bouton Imprimer pour une impression directe (mise en page automatique paysage). Les exports PDF et Word (docx) génèrent un document téléchargeable reprenant la mise en page du calendrier, un mois par page."
+      },
+      "garmin": {
+        "title": "Import Garmin Connect",
+        "body": "Comme cette application est 100% front-end (sans serveur), elle ne peut pas se connecter directement à l'API Garmin (authentification et CORS). Vous pouvez cependant exporter vos activités depuis Garmin Connect (Activités > Exporter au format CSV) puis importer ce fichier CSV : les activités seront automatiquement associées aux bonnes dates et types."
+      },
+      "paper": {
+        "title": "Formats papier",
+        "body": "Les formats A4, Letter, A3 et Legal sont disponibles. Le format par défaut est déterminé automatiquement selon la langue/locale du navigateur (Letter pour les États-Unis, A4 ailleurs)."
+      }
+    }
+  },
+  "garmin": {
+    "title": "Import Garmin Connect",
+    "instructions": "Exportez vos activités depuis Garmin Connect au format CSV (Activités > icône d'export), puis sélectionnez le fichier ci-dessous.",
+    "selectFile": "Choisir un fichier CSV",
+    "matched": "{{count}} activité(s) importée(s) avec succès.",
+    "noMatch": "{{count}} activité(s) n'ont pas pu être associées automatiquement.",
+    "close": "Fermer",
+    "import": "Importer"
+  },
+  "common": {
+    "add": "Ajouter",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "months": {
+    "0": "Janvier", "1": "Février", "2": "Mars", "3": "Avril", "4": "Mai", "5": "Juin",
+    "6": "Juillet", "7": "Août", "8": "Septembre", "9": "Octobre", "10": "Novembre", "11": "Décembre"
+  }
+}

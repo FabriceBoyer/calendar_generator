@@ -1,0 +1,46 @@
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body,
+  #root {
+    background: white !important;
+    height: auto !important;
+  }
+
+  .app-shell {
+    display: block !important;
+  }
+
+  .scroll-area {
+    overflow: visible !important;
+  }
+
+  .print-area {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .calendar-page {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: unset !important;
+    page-break-after: always;
+    background: white !important;
+    color: #111 !important;
+  }
+
+  .calendar-page * {
+    color: #111 !important;
+  }
+
+  .day-column {
+    border-color: #ccc !important;
+  }
+}

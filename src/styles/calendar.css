@@ -1,0 +1,235 @@
+.print-area {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.calendar-page {
+  width: min(96vw, 1500px);
+  padding: 1.4rem 1.6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  animation: floatIn 0.5s ease both;
+  position: relative;
+}
+
+.calendar-page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.calendar-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(120deg, var(--accent), #38bdf8 60%, #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  font-size: 0.72rem;
+  color: var(--text-1);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  white-space: nowrap;
+}
+
+.legend-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--legend-color) 25%, transparent);
+  font-size: 0.9em;
+}
+
+.calendar-grid {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  gap: 0;
+  position: relative;
+}
+
+.day-header-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.15rem 0 0.35rem;
+  border-left: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.day-header-cell:last-child {
+  border-right: 1px solid var(--border);
+}
+
+.day-header-cell.weekend {
+  background: rgba(var(--accent-rgb), 0.08);
+}
+
+.day-number {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.1;
+}
+
+.day-weekday {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+}
+
+.day-activities-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  padding: 3px 2px;
+  border-left: 1px solid var(--border);
+  overflow: hidden;
+}
+.day-activities-cell:last-child {
+  border-right: 1px solid var(--border);
+}
+
+.activity-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.activity-toggle {
+  width: 100%;
+  min-height: 1.35em;
+  border-radius: 6px;
+  border: 1.4px solid;
+  background: transparent;
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 0;
+  transition: transform 0.12s ease, background 0.2s ease;
+}
+.activity-toggle:not(:disabled):hover {
+  transform: scale(1.08);
+}
+.activity-row.active .activity-toggle {
+  animation: pulseGlow 1.8s ease-out 1;
+}
+
+.activity-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+}
+
+.activity-field-input {
+  width: 100%;
+  font-size: 0.55rem;
+  padding: 1px 3px;
+  border-radius: 4px;
+  text-align: center;
+  min-height: 1.1em;
+}
+
+.activity-blank-line {
+  width: 90%;
+  border-bottom: 1px dashed var(--text-2);
+  height: 0.9em;
+}
+
+.weight-axis {
+  position: relative;
+  border-right: 1px dashed var(--border);
+  font-size: 0.55rem;
+  color: var(--text-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+.axis-unit {
+  writing-mode: vertical-rl;
+  font-size: 0.5rem;
+  opacity: 0.7;
+}
+
+.weight-chart-overlay {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+.chart-gridline {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.chart-colline {
+  stroke: var(--border);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.day-weight-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  padding: 2px;
+}
+.day-weight-cell:last-child {
+  border-right: 1px solid var(--border);
+}
+
+.weight-input {
+  width: 100%;
+  text-align: center;
+  font-size: 0.6rem;
+  padding: 1px 2px;
+  min-height: 1.4em;
+}
+
+.weight-blank-line {
+  width: 100%;
+  border-bottom: 1px dashed var(--text-2);
+  height: 0.9em;
+}
+
+.calendar-footer-label {
+  margin-top: 0.3rem;
+  font-size: 0.65rem;
+  color: var(--text-2);
+  text-align: right;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .calendar-page {
+    aspect-ratio: unset !important;
+    min-height: 70vh;
+  }
+}

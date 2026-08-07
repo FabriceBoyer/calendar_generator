@@ -1,0 +1,152 @@
+{
+  "app": {
+    "title": "Fitness Calendar",
+    "subtitle": "Printable calendar generator"
+  },
+  "header": {
+    "print": "Print",
+    "exportPdf": "Export PDF",
+    "exportDocx": "Export Word",
+    "exportJson": "Export JSON",
+    "importJson": "Import JSON",
+    "settings": "Settings",
+    "docs": "Documentation",
+    "home": "Calendar",
+    "today": "Today",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "theme": "Theme",
+    "language": "Language",
+    "export": "Export",
+    "garmin": "Garmin import"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "accentColor": "Accent color",
+    "backgroundImage": "Background image (URL)",
+    "backgroundImagePlaceholder": "https://example.com/image.jpg",
+    "removeImage": "Remove image",
+    "paperSize": "Paper size",
+    "weightRange": "Weight range",
+    "weightUnit": "Weight unit",
+    "min": "Min",
+    "max": "Max",
+    "activities": "Activities",
+    "addActivity": "Add activity",
+    "editActivity": "Edit activity",
+    "deleteActivity": "Delete",
+    "activityName": "Activity name",
+    "activityIcon": "Icon",
+    "activityColor": "Color",
+    "activityFields": "Detail fields",
+    "addField": "Add field",
+    "fieldLabel": "Label",
+    "fieldUnit": "Unit",
+    "fieldType": "Type",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "reset": "Reset",
+    "resetConfirm": "Reset all settings and data?",
+    "light": "Light",
+    "dark": "Dark",
+    "language": "Language",
+    "onlineMode": "Online mode (interactive input)",
+    "onlineModeDesc": "Enables interactive filling of the calendar in the browser, in addition to printing. Your data stays stored locally.",
+    "dataSection": "Data",
+    "exportJsonDesc": "Export all your data (activities, entries, settings) to a JSON file.",
+    "importJsonDesc": "Import previously exported JSON data.",
+    "garminSection": "Garmin Connect import"
+  },
+  "fieldTypes": {
+    "duration": "Duration",
+    "distance": "Distance",
+    "number": "Number",
+    "text": "Text"
+  },
+  "calendar": {
+    "weight": "Weight",
+    "weightShort": "kg",
+    "activities": "Activities",
+    "notes": "Notes",
+    "printTitle": "Calendar {{month}}"
+  },
+  "activities": {
+    "walk": "Walk",
+    "swim": "Swim",
+    "pilates": "Pilates",
+    "bike": "Bike",
+    "plank": "Plank",
+    "run": "Run"
+  },
+  "fields": {
+    "duration": "Duration",
+    "distance": "Distance",
+    "sets": "Sets",
+    "number": "Number",
+    "text": "Text"
+  },
+  "docs": {
+    "title": "Documentation",
+    "intro": "User guide for the fitness calendar generator.",
+    "sections": {
+      "overview": {
+        "title": "Overview",
+        "body": "This app generates a printable monthly calendar, one month per landscape page, with one column per day. Each column lets you record the physical activities done that day (top of the column) and the day's weight (bottom of the column), connected across days to form an evolution chart."
+      },
+      "activities": {
+        "title": "Activities",
+        "body": "Default activities are provided (walk, swim, pilates, bike, plank, run). You can add, edit or remove them from Settings, with a custom icon, color and detail fields (duration, distance, sets, etc)."
+      },
+      "weight": {
+        "title": "Weight tracking",
+        "body": "Enter the day's weight at the bottom of each column. A chart automatically connects the points across the month. The axis range (default 90-110 kg) is configurable in Settings."
+      },
+      "persistence": {
+        "title": "Local storage",
+        "body": "All your data (settings, activities, entries) is automatically saved to your browser's local storage. Nothing is sent to a server: everything stays on your device."
+      },
+      "online": {
+        "title": "Online mode",
+        "body": "Online mode lets you fill in the calendar directly in the browser before printing. You can export your data as JSON at any time (backup or transfer to another device) and re-import it later."
+      },
+      "export": {
+        "title": "Printing and export",
+        "body": "Use the Print button for direct printing (automatic landscape layout). PDF and Word (docx) exports generate a downloadable document reproducing the calendar layout, one month per page."
+      },
+      "garmin": {
+        "title": "Garmin Connect import",
+        "body": "Since this app is 100% front-end (no server), it cannot connect directly to the Garmin API (authentication and CORS). However, you can export your activities from Garmin Connect (Activities > export icon) as CSV and import that file here: activities will be automatically matched to the right dates and types."
+      },
+      "paper": {
+        "title": "Paper sizes",
+        "body": "A4, Letter, A3 and Legal formats are available. The default format is automatically determined from your browser's language/locale (Letter for the US, A4 elsewhere)."
+      }
+    }
+  },
+  "garmin": {
+    "title": "Garmin Connect import",
+    "instructions": "Export your activities from Garmin Connect as CSV (Activities > export icon), then select the file below.",
+    "selectFile": "Choose a CSV file",
+    "matched": "{{count}} activities imported successfully.",
+    "noMatch": "{{count}} activities could not be matched automatically.",
+    "close": "Close",
+    "import": "Import"
+  },
+  "common": {
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "months": {
+    "0": "January", "1": "February", "2": "March", "3": "April", "4": "May", "5": "June",
+    "6": "July", "7": "August", "8": "September", "9": "October", "10": "November", "11": "December"
+  }
+}
