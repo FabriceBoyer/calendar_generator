@@ -198,16 +198,31 @@
   left: 0;
   right: 2px;
   transform: translateY(-50%);
-  font-size: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-1);
   text-align: right;
   line-height: 1;
   white-space: nowrap;
 }
+.axis-tick:first-child,
+.axis-tick:last-child {
+  color: var(--text-0);
+  font-weight: 700;
+}
 
-.weight-chart-overlay {
+.weight-chart-wrap {
+  position: relative;
   width: 100%;
   height: 100%;
   pointer-events: none;
+}
+
+.weight-chart-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
 }
 .chart-gridline {
@@ -219,6 +234,47 @@
   stroke: var(--border);
   stroke-width: 1;
   opacity: 0.5;
+}
+.chart-line {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+}
+
+.weight-chart-points {
+  position: absolute;
+  inset: 0;
+}
+
+.weight-point {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px var(--surface-solid), 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.weight-point.current {
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 0 2.5px var(--surface-solid), 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.weight-point-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 0.68rem;
+  font-weight: 800;
+  white-space: nowrap;
+  background: var(--surface-solid);
+  border: 1.5px solid;
+  border-radius: 999px;
+  padding: 0.1em 0.55em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.weight-point-label.above {
+  margin-top: -1.1em;
+}
+.weight-point-label.below {
+  margin-top: 1.1em;
 }
 
 .day-weight-cell {
@@ -239,10 +295,15 @@
 .weight-input {
   width: 100%;
   text-align: center;
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-0);
   padding: 2px;
   min-height: 0;
+}
+.weight-input:not(:placeholder-shown) {
+  background: rgba(var(--accent-rgb), 0.12);
+  border-color: rgba(var(--accent-rgb), 0.4);
 }
 
 .weight-blank-line {

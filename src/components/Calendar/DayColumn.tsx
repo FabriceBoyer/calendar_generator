@@ -87,6 +87,7 @@ export function DayWeightInputCell({ dateStr, col, entry, interactive, inputRow 
           type="number"
           className="weight-input"
           step="0.1"
+          placeholder="–"
           value={entry.weight ?? ''}
           onChange={(e) => setDayWeight(dateStr, e.target.value === '' ? null : Number(e.target.value))}
         />
