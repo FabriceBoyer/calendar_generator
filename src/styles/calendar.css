@@ -82,6 +82,15 @@
   background: rgba(var(--accent-rgb), 0.08);
 }
 
+.day-header-cell.today {
+  background: var(--accent);
+  border-radius: 8px 8px 0 0;
+}
+.day-header-cell.today .day-number,
+.day-header-cell.today .day-weekday {
+  color: white;
+}
+
 .day-number {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;

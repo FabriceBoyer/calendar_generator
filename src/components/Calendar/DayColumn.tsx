@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import type { ActivityDef, DayEntry, Locale } from '../../types'
-import { isWeekend, weekdayShort } from '../../utils/date'
+import { isToday, isWeekend, weekdayShort } from '../../utils/date'
 import { resolveLabel } from '../../i18n'
 import { useAppStore } from '../../store/useAppStore'
 
@@ -18,9 +18,10 @@ interface DayColumnProps {
 
 export function DayHeaderCell({ date, col, locale }: Pick<DayColumnProps, 'date' | 'col' | 'locale'>) {
   const weekend = isWeekend(date)
+  const today = isToday(date)
   return (
     <div
-      className={`day-header-cell${weekend ? ' weekend' : ''}`}
+      className={`day-header-cell${weekend ? ' weekend' : ''}${today ? ' today' : ''}`}
       style={{ gridColumn: col, gridRow: 1 }}
     >
       <span className="day-number">{date.getDate()}</span>

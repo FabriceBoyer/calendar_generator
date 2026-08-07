@@ -18,9 +18,9 @@ const TYPE_KEYWORDS: Record<string, string[]> = {
   walk: ['walk', 'marche', 'hiking', 'randonn'],
   run: ['run', 'course', 'jog'],
   bike: ['cycl', 'bik', 'vélo', 'velo', 'mountain'],
-  swim: ['swim', 'natation', 'piscine', 'pool'],
+  swim: ['swim', 'natation', 'piscine', 'pool', 'nat.'],
   pilates: ['pilates', 'yoga'],
-  plank: ['strength', 'core', 'gainage'],
+  plank: ['strength', 'core', 'gainage', 'musculation'],
 }
 
 function parseCsvLine(line: string): string[] {
@@ -54,12 +54,43 @@ function parseCsvLine(line: string): string[] {
 }
 
 function parseDuration(raw: string): number | null {
-  if (!raw) return null
-  const parts = raw.split(':').map((p) => Number.parseFloat(p))
+  if (!raw || raw === '--') return null
+  const parts = raw.split(':').map((p) => Number.parseFloat(p.replace(',', '.')))
   if (parts.some((p) => Number.isNaN(p))) return null
   if (parts.length === 3) return parts[0] * 60 + parts[1] + parts[2] / 60
   if (parts.length === 2) return parts[0] + parts[1] / 60
   return Number.parseFloat(raw) || null
+}
+
+/**
+ * Garmin Connect's CSV export is inconsistent across locales and activity
+ * types: cardio distances use a locale decimal separator (e.g. French
+ * "15,05" = 15.05 km), pool swims are exported with a literal dot ("2.050"
+ * = 2.05 km), and open-water swims are exported as bare meters ("957").
+ * This normalizes all of that down to kilometers.
+ */
+function parseDistanceKm(raw: string, activityId: string | null): number | null {
+  if (!raw || raw === '--') return null
+  const trimmed = raw.trim()
+  if (trimmed === '') return null
+
+  if (trimmed.includes(',')) {
+    // Locale decimal comma; strip any thousands-grouping dot first.
+    const normalized = trimmed.replace(/\./g, '').replace(',', '.')
+    const n = Number.parseFloat(normalized)
+    return Number.isNaN(n) ? null : n
+  }
+
+  if (trimmed.includes('.')) {
+    const n = Number.parseFloat(trimmed)
+    return Number.isNaN(n) ? null : n
+  }
+
+  const n = Number.parseFloat(trimmed)
+  if (Number.isNaN(n)) return null
+  // A bare integer for a swim is almost always raw meters (open water).
+  if (activityId === 'swim' && n > 50) return n / 1000
+  return n
 }
 
 function parseDate(raw: string): string | null {
@@ -86,10 +117,14 @@ export function parseGarminCsv(csvText: string, activities: ActivityDef[]): Garm
   if (lines.length < 2) return { parsed: [], matchedCount: 0, unmatchedCount: 0 }
 
   const header = parseCsvLine(lines[0]).map((h) => h.trim().toLowerCase())
-  const typeIdx = header.findIndex((h) => h.includes('activity type') || h === 'type')
+  // Column names vary by Garmin Connect export locale (e.g. "Activity Type"
+  // vs "Type d'activité", "Time"/"Duration" vs "Durée"), so match loosely.
+  const typeIdx = header.findIndex((h) => h.includes('type'))
   const dateIdx = header.findIndex((h) => h.includes('date'))
   const distanceIdx = header.findIndex((h) => h.includes('distance'))
-  const timeIdx = header.findIndex((h) => h === 'time' || h.includes('moving time') || h.includes('duration'))
+  const timeIdx = header.findIndex(
+    (h) => h.includes('durée') || h.includes('duration') || h === 'time' || h.includes('moving time'),
+  )
 
   const parsed: ParsedGarminActivity[] = []
   for (let i = 1; i < lines.length; i++) {
@@ -98,9 +133,9 @@ export function parseGarminCsv(csvText: string, activities: ActivityDef[]): Garm
     const rawDate = dateIdx >= 0 ? cols[dateIdx] ?? '' : ''
     const date = parseDate(rawDate)
     if (!date) continue
-    const distanceKm = distanceIdx >= 0 ? Number.parseFloat(cols[distanceIdx]) || null : null
-    const durationMin = timeIdx >= 0 ? parseDuration(cols[timeIdx]) : null
     const matchedActivityId = matchActivity(rawType, activities)
+    const distanceKm = distanceIdx >= 0 ? parseDistanceKm(cols[distanceIdx] ?? '', matchedActivityId) : null
+    const durationMin = timeIdx >= 0 ? parseDuration(cols[timeIdx] ?? '') : null
     parsed.push({ date, rawType, durationMin, distanceKm, matchedActivityId })
   }
 

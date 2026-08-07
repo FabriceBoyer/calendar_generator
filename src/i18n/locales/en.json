@@ -118,7 +118,17 @@
       },
       "garmin": {
         "title": "Garmin Connect import",
-        "body": "Since this app is 100% front-end (no server), it cannot connect directly to the Garmin API (authentication and CORS). However, you can export your activities from Garmin Connect (Activities > export icon) as CSV and import that file here: activities will be automatically matched to the right dates and types."
+        "intro": "Since this app is 100% front-end (no server), it cannot connect directly to the Garmin API (authentication and CORS restrictions require a backend). The workaround: export your activities from Garmin Connect as CSV, then import that file here. The import understands both French and English exports, and automatically matches each activity to the right date and type, with its duration and distance.",
+        "linkLabel": "Open Garmin Connect",
+        "disclaimer": "The diagrams below illustrate the export flow; they are not real screenshots of Garmin Connect, whose interface changes regularly.",
+        "step1Title": "1. Open your activity list",
+        "step1Body": "Sign in at connect.garmin.com, then open \"Activities\" in the left-hand menu.",
+        "step2Title": "2. Filter the period to export",
+        "step2Body": "Use the date picker at the top of the list to pick the period you want (e.g. the last 3 months).",
+        "step3Title": "3. Export as CSV",
+        "step3Body": "Click the export icon (⬇) above the activity list, then choose \"Export CSV\". An Activities.csv file is downloaded.",
+        "step4Title": "4. Import the file here",
+        "step4Body": "In Fitness Calendar, click \"Garmin import\" in the toolbar, then select the downloaded Activities.csv file. Recognized activities (walk, run, bike, swim, pilates, strength training…) are automatically added to the right days."
       },
       "paper": {
         "title": "Paper sizes",
@@ -130,6 +140,7 @@
     "title": "Garmin Connect import",
     "instructions": "Export your activities from Garmin Connect as CSV (Activities > export icon), then select the file below.",
     "selectFile": "Choose a CSV file",
+    "guideLink": "See the detailed guide (Garmin Connect export)",
     "matched": "{{count}} activities imported successfully.",
     "noMatch": "{{count}} activities could not be matched automatically.",
     "close": "Close",

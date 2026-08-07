@@ -20,7 +20,7 @@ export const defaultActivities: ActivityDef[] = [
     builtin: true,
     fields: [
       { id: 'duration', label: 'fields.duration', type: 'duration', unit: 'min' },
-      { id: 'distance', label: 'fields.distance', type: 'distance', unit: 'm' },
+      { id: 'distance', label: 'fields.distance', type: 'distance', unit: 'km' },
     ],
   },
   {

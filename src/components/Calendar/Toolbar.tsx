@@ -24,11 +24,18 @@ export function Toolbar({ onOpenSettings, onOpenExport, onOpenGarmin }: ToolbarP
         <button className="btn btn-icon" onClick={() => setCurrentMonth(shiftMonth(currentMonth, -1))} title={t('header.prevMonth')} type="button">
           ◀
         </button>
-        <button className="btn month-label" onClick={() => setCurrentMonth(thisMonthKey)} type="button">
-          {formatMonthTitle(currentMonth, locale)}
-        </button>
+        <span className="month-label">{formatMonthTitle(currentMonth, locale)}</span>
         <button className="btn btn-icon" onClick={() => setCurrentMonth(shiftMonth(currentMonth, 1))} title={t('header.nextMonth')} type="button">
           ▶
+        </button>
+        <button
+          className="btn"
+          onClick={() => setCurrentMonth(thisMonthKey)}
+          disabled={currentMonth === thisMonthKey}
+          title={t('header.today')}
+          type="button"
+        >
+          🏠 {t('header.today')}
         </button>
       </div>
 

@@ -102,8 +102,12 @@
 
 .month-label {
   min-width: 11rem;
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
+  padding: 0.55em 1em;
   font-weight: 700;
+  font-size: 0.9rem;
   text-transform: capitalize;
 }
 
@@ -333,6 +337,18 @@
   gap: 0.4em;
   width: fit-content;
 }
+.garmin-guide-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  width: fit-content;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.garmin-guide-inline-link:hover {
+  text-decoration: underline;
+}
 .garmin-result {
   font-size: 0.85rem;
 }
@@ -378,6 +394,163 @@
   color: var(--text-1);
   line-height: 1.55;
   font-size: 0.92rem;
+}
+
+.garmin-guide p {
+  color: var(--text-1);
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.garmin-guide-link {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0.4rem 0 1rem;
+}
+
+.garmin-guide-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  margin: 0.6rem 0 1rem;
+}
+
+.garmin-guide-step {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: var(--bg-2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.garmin-guide-step h4 {
+  font-size: 0.85rem;
+  color: var(--text-0);
+}
+.garmin-guide-step p {
+  font-size: 0.78rem;
+  margin: 0;
+}
+
+.garmin-guide-disclaimer {
+  font-size: 0.75rem !important;
+  font-style: italic;
+  color: var(--text-2) !important;
+}
+
+.garmin-step-svg {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: var(--bg-1);
+}
+.garmin-step-svg .mock-window {
+  fill: var(--surface-solid);
+  stroke: var(--border);
+}
+.garmin-step-svg .mock-titlebar {
+  fill: var(--bg-2);
+}
+.garmin-step-svg .mock-dot {
+  fill: var(--text-2);
+  opacity: 0.5;
+}
+.garmin-step-svg .mock-url {
+  fill: var(--bg-1);
+}
+.garmin-step-svg .mock-url-text {
+  font-size: 6px;
+  fill: var(--text-1);
+}
+.garmin-step-svg .mock-sidebar {
+  fill: var(--bg-1);
+}
+.garmin-step-svg .mock-sidebar-item {
+  fill: var(--border);
+}
+.garmin-step-svg .mock-sidebar-item.active {
+  fill: var(--accent);
+}
+.garmin-step-svg .mock-row {
+  fill: var(--bg-1);
+  stroke: var(--border);
+  stroke-width: 0.5;
+}
+.garmin-step-svg .mock-datebar {
+  fill: rgba(var(--accent-rgb), 0.15);
+  stroke: var(--accent);
+}
+.garmin-step-svg .mock-datebar-text {
+  font-size: 7px;
+  fill: var(--text-0);
+}
+.garmin-step-svg .mock-calendar-pop rect:first-child {
+  fill: var(--surface-solid);
+  stroke: var(--border);
+}
+.garmin-step-svg .day-cell {
+  fill: var(--bg-1);
+}
+.garmin-step-svg .day-selected {
+  fill: var(--accent);
+}
+.garmin-step-svg .mock-export-btn {
+  fill: var(--accent);
+}
+.garmin-step-svg .mock-export-icon {
+  font-size: 8px;
+  fill: white;
+}
+.garmin-step-svg .mock-menu rect:first-child {
+  fill: var(--surface-solid);
+  stroke: var(--border);
+}
+.garmin-step-svg .menu-item {
+  fill: var(--border);
+}
+.garmin-step-svg .menu-item.selected {
+  fill: var(--accent);
+}
+.garmin-step-svg .mock-menu-text {
+  font-size: 6px;
+  fill: var(--text-0);
+  font-weight: 600;
+}
+.garmin-step-svg .mock-file {
+  fill: rgba(var(--accent-rgb), 0.12);
+  stroke: var(--accent);
+}
+.garmin-step-svg .mock-file-fold {
+  fill: rgba(var(--accent-rgb), 0.3);
+}
+.garmin-step-svg .mock-file-text {
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--accent);
+}
+.garmin-step-svg .mock-file-label {
+  font-size: 7px;
+  fill: var(--text-2);
+}
+.garmin-step-svg .mock-arrow-line {
+  stroke: var(--text-2);
+  stroke-width: 1.5;
+  fill: none;
+}
+.garmin-step-svg .mock-arrow-head {
+  fill: var(--text-2);
+}
+.garmin-step-svg .mock-app {
+  fill: var(--surface-solid);
+  stroke: var(--accent);
+}
+.garmin-step-svg .mock-app-icon {
+  font-size: 14px;
+}
+.garmin-step-svg .mock-app-text {
+  font-size: 8px;
+  fill: var(--text-1);
 }
 
 @media (max-width: 720px) {

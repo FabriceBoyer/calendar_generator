@@ -50,3 +50,12 @@ export function isWeekend(date: Date): boolean {
   const day = date.getDay()
   return day === 0 || day === 6
 }
+
+export function isToday(date: Date): boolean {
+  const now = new Date()
+  return (
+    date.getFullYear() === now.getFullYear() &&
+    date.getMonth() === now.getMonth() &&
+    date.getDate() === now.getDate()
+  )
+}

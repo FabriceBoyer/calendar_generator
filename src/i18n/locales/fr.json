@@ -118,7 +118,17 @@
       },
       "garmin": {
         "title": "Import Garmin Connect",
-        "body": "Comme cette application est 100% front-end (sans serveur), elle ne peut pas se connecter directement à l'API Garmin (authentification et CORS). Vous pouvez cependant exporter vos activités depuis Garmin Connect (Activités > Exporter au format CSV) puis importer ce fichier CSV : les activités seront automatiquement associées aux bonnes dates et types."
+        "intro": "Comme cette application est 100% front-end (sans serveur), elle ne peut pas se connecter directement à l'API Garmin (l'authentification et les restrictions CORS imposent un serveur intermédiaire). La solution : exporter vos activités depuis Garmin Connect au format CSV, puis importer ce fichier ici. L'import reconnaît aussi bien les exports en français qu'en anglais, et associe automatiquement chaque activité à la bonne date, au bon type, avec sa durée et sa distance.",
+        "linkLabel": "Ouvrir Garmin Connect",
+        "disclaimer": "Les schémas ci-dessous illustrent le parcours d'export ; ce ne sont pas des captures d'écran réelles de Garmin Connect, dont l'interface évolue régulièrement.",
+        "step1Title": "1. Ouvrez la liste de vos activités",
+        "step1Body": "Connectez-vous sur connect.garmin.com, puis ouvrez « Activités » dans le menu de gauche.",
+        "step2Title": "2. Filtrez la période à exporter",
+        "step2Body": "Utilisez le sélecteur de dates en haut de la liste pour choisir la période souhaitée (par exemple les 3 derniers mois).",
+        "step3Title": "3. Exportez au format CSV",
+        "step3Body": "Cliquez sur l'icône d'export (⬇) au-dessus de la liste, puis choisissez « Exporter le CSV ». Un fichier Activities.csv est téléchargé.",
+        "step4Title": "4. Importez le fichier ici",
+        "step4Body": "Dans Calendrier Fitness, cliquez sur « Import Garmin » dans la barre d'outils, puis sélectionnez le fichier Activities.csv téléchargé. Les activités reconnues (marche, course, vélo, natation, pilates, musculation…) sont ajoutées automatiquement aux bons jours."
       },
       "paper": {
         "title": "Formats papier",
@@ -130,6 +140,7 @@
     "title": "Import Garmin Connect",
     "instructions": "Exportez vos activités depuis Garmin Connect au format CSV (Activités > icône d'export), puis sélectionnez le fichier ci-dessous.",
     "selectFile": "Choisir un fichier CSV",
+    "guideLink": "Voir le guide détaillé (export Garmin Connect)",
     "matched": "{{count}} activité(s) importée(s) avec succès.",
     "noMatch": "{{count}} activité(s) n'ont pas pu être associées automatiquement.",
     "close": "Fermer",

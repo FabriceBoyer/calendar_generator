@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { useAppStore } from '../../store/useAppStore'
 import { parseGarminCsv } from '../../utils/garminImport'
 import { readFileAsText } from '../../utils/download'
@@ -31,8 +32,8 @@ export function GarminImport() {
       if (durationField && item.durationMin !== null) {
         setDayActivityValue(item.date, item.matchedActivityId, durationField.id, item.durationMin.toFixed(0))
       }
-      if (distanceField && item.distanceKm !== null) {
-        setDayActivityValue(item.date, item.matchedActivityId, distanceField.id, item.distanceKm.toFixed(1))
+      if (distanceField && item.distanceKm !== null && item.distanceKm > 0) {
+        setDayActivityValue(item.date, item.matchedActivityId, distanceField.id, item.distanceKm.toFixed(2))
       }
     }
     e.target.value = ''
@@ -45,6 +46,9 @@ export function GarminImport() {
         📂 {t('garmin.selectFile')}
         <input type="file" accept=".csv,text/csv" hidden onChange={handleFile} />
       </label>
+      <Link to="/docs" className="garmin-guide-inline-link">
+        📖 {t('garmin.guideLink')}
+      </Link>
 
       {result && (
         <div className="garmin-result">
