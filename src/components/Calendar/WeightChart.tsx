@@ -42,7 +42,7 @@ export function WeightChart({ weights, range, gridRow, color = 'var(--accent)' }
   }, [points])
 
   return (
-    <div className="weight-chart-wrap" style={{ gridRow, gridColumn: '1 / -1' }}>
+    <div className="weight-chart-wrap" style={{ gridRow, gridColumn: '2 / -1' }}>
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="weight-chart-overlay">
         {gridLines.map((g) => (
           <line
