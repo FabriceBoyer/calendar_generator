@@ -194,7 +194,19 @@ export const useAppStore = create<AppStore>()(
     }),
     {
       name: 'calfit-storage',
-      version: 1,
+      version: 2,
+      migrate: (persistedState) => {
+        const state = persistedState as AppStore
+        const hasPadel = state.activities.some(
+          (activity) => activity.id === 'padel' || activity.name.trim().toLowerCase() === 'padel',
+        )
+        return {
+          ...state,
+          activities: hasPadel
+            ? state.activities
+            : [...state.activities, defaultActivities.find((activity) => activity.id === 'padel')!],
+        }
+      },
     },
   ),
 )

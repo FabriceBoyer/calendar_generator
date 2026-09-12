@@ -2,6 +2,14 @@ import type { ActivityDef } from '../types'
 
 export const defaultActivities: ActivityDef[] = [
   {
+    id: 'padel',
+    name: 'activities.padel',
+    icon: '🎾',
+    color: '#facc15',
+    builtin: true,
+    fields: [{ id: 'duration', label: 'fields.duration', type: 'duration', unit: 'min' }],
+  },
+  {
     id: 'walk',
     name: 'activities.walk',
     icon: '🚶',

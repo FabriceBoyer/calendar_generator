@@ -77,6 +77,7 @@
     "walk": "Walk",
     "swim": "Swim",
     "pilates": "Pilates",
+    "padel": "Padel",
     "bike": "Bike",
     "plank": "Plank",
     "run": "Run"
@@ -98,7 +99,7 @@
       },
       "activities": {
         "title": "Activities",
-        "body": "Default activities are provided (walk, swim, pilates, bike, plank, run). You can add, edit or remove them from Settings, with a custom icon, color and detail fields (duration, distance, sets, etc)."
+        "body": "Default activities are provided (walk, swim, pilates, bike, plank, run, padel). You can add, edit or remove them from Settings, with a custom icon, color and detail fields (duration, distance, sets, etc)."
       },
       "weight": {
         "title": "Weight tracking",

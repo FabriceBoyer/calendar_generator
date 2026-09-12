@@ -19,6 +19,7 @@ const TYPE_KEYWORDS: Record<string, string[]> = {
   run: ['run', 'course', 'jog'],
   bike: ['cycl', 'bik', 'vélo', 'velo', 'mountain'],
   swim: ['swim', 'natation', 'piscine', 'pool', 'nat.'],
+  padel: ['padel'],
   pilates: ['pilates', 'yoga'],
   plank: ['strength', 'core', 'gainage', 'musculation'],
 }

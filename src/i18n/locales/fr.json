@@ -77,6 +77,7 @@
     "walk": "Marche",
     "swim": "Piscine",
     "pilates": "Pilates",
+    "padel": "Padel",
     "bike": "Vélo",
     "plank": "Gainage",
     "run": "Course"
@@ -98,7 +99,7 @@
       },
       "activities": {
         "title": "Activités",
-        "body": "Des activités par défaut sont proposées (marche, piscine, pilates, vélo, gainage, course). Vous pouvez en ajouter, modifier ou supprimer depuis les Paramètres, avec une icône, une couleur et des champs de détail personnalisés (durée, distance, séries, etc)."
+        "body": "Des activités par défaut sont proposées (marche, piscine, pilates, vélo, gainage, course, padel). Vous pouvez en ajouter, modifier ou supprimer depuis les Paramètres, avec une icône, une couleur et des champs de détail personnalisés (durée, distance, séries, etc)."
       },
       "weight": {
         "title": "Suivi du poids",
